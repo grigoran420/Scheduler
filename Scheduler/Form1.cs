@@ -14,7 +14,6 @@ namespace Scheduler
 {
     public partial class Form1 : Form
     {
-        public string name;
         readonly string Path = "Plans.pln";
         List<string> Plans;
         public Form1()
@@ -54,13 +53,21 @@ namespace Scheduler
 
         private void Create_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Name is missing", "Warring", MessageBoxButtons.OK);
+                return;
+            } else if ((Hours.SelectedItem == null) || (Minutes.SelectedItem == null) || (Seconds.SelectedItem == null))
+            {
+                MessageBox.Show("Wrong time", "Warring", MessageBoxButtons.OK);
+                return;
+            }
             List<string> PlansWrite = new List<string>();
-            name = textBox1.Text;
 
-            PlansWrite.Add(name);
+            PlansWrite.Add(textBox1.Text);
             PlansWrite.Add($"{dateTimePicker1.Value.Day}.{dateTimePicker1.Value.Month}.{dateTimePicker1.Value.Year}");
             PlansWrite.Add($"{Hours.SelectedItem}:{Minutes.SelectedItem}:{Seconds.SelectedItem}");
-            PlansWrite.Add("---------------------------");
+            PlansWrite.Add("--------------------------------------");
             for (int i = 0; i < PlansWrite.Count; i++)
             {
                 listBox1.Items.Add(PlansWrite[i]);
