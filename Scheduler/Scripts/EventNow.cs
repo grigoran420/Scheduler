@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Scheduler.Scripts
 {
@@ -24,6 +26,9 @@ namespace Scheduler.Scripts
                 if (DaysNow < DateTime.Now)
                 {
                     Plans.RemoveRange(i, 4);
+                    SoundPlayer player = new SoundPlayer(@"Sound.wav");
+                    player.Load(); 
+                    player.Play();
                     MessageBox.Show("The event happened", "Congratulations", MessageBoxButtons.OK);
                 }
 

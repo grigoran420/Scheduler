@@ -93,7 +93,10 @@ namespace Scheduler
             EventNow @event = new EventNow();
             List<string> EventActive = @event.Check(Plans);
             listBox1.Items.Clear();
-            for (int i = 0; i < EventActive.Count; i++) listBox1.Items.Add(EventActive[i]);
+            for (int i = 0; i < EventActive.Count; i++)
+            {
+                listBox1.Items.Add(EventActive[i]);
+            }
             //MessageBox.Show(EventActive.ToString());
         }
     }
