@@ -20,7 +20,7 @@ namespace Scheduler
             while (sec == System.DateTime.Now.Second) { }
             dateTimePicker1.Value = DateTime.Now;
             timer1.Enabled = true;
-            EventTimer.Enabled = true;
+            
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace Scheduler
             }
             //else MessageBox.Show("Don't find data!", "Error", MessageBoxButtons.OK);
             Create.Enabled = true;
+            EventTimer.Enabled = true;
         }
 
         private void Create_Click(object sender, EventArgs e)
@@ -59,6 +60,16 @@ namespace Scheduler
             {
                 MessageBox.Show("Event overflow", "Warring", MessageBoxButtons.OK);
                 return;
+            }
+            for (int i = 1; i < listBox1.Items.Count; i += 4)
+            {
+                string bufferDate = $"{dateTimePicker1.Value.Day}.{dateTimePicker1.Value.Month}.{dateTimePicker1.Value.Year}";
+                string bufferTime = $"{Hours.SelectedItem}:{Minutes.SelectedItem}:{Seconds.SelectedItem}";
+                if ((Convert.ToDateTime(listBox1.Items[i]) == Convert.ToDateTime(bufferDate)) && (Convert.ToDateTime(listBox1.Items[i + 1 ]) == Convert.ToDateTime(bufferTime)) && (listBox1.Items[i - 1].ToString() == textBox1.Text))
+                {
+                    MessageBox.Show("Dublicate data", "Warning", MessageBoxButtons.OK);
+                    return;
+                }
             }
 
             List<string> PlansWrite = new List<string>();
