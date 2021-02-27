@@ -9,7 +9,7 @@ namespace Scheduler.Scripts
 {
     class PlansWrite
     {
-        StreamWriter sw;
+        private StreamWriter sw;
 
 
         internal void Write (string Path, List<string> Plans)

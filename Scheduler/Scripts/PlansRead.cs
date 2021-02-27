@@ -7,8 +7,8 @@ namespace Scheduler.Scripts
     
     class PlansRead
     {
-        StreamReader sr;
-        readonly List<string> Plans;
+        private StreamReader sr;
+        private readonly List<string> Plans;
         internal PlansRead()
         {
 
