@@ -1,0 +1,10 @@
+D:\проекты в резюме\Scheduler\Scheduler\bin\Release\Scheduler.exe.config
+D:\проекты в резюме\Scheduler\Scheduler\bin\Release\Scheduler.exe
+D:\проекты в резюме\Scheduler\Scheduler\bin\Release\Scheduler.pdb
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.csprojAssemblyReference.cache
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.Form1.resources
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.Properties.Resources.resources
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.csproj.GenerateResource.cache
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.csproj.CoreCompileInputs.cache
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.exe
+D:\проекты в резюме\Scheduler\Scheduler\obj\Release\Scheduler.pdb

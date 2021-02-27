@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\EventNow.cs" />
     <Compile Include="Scripts\PlansRead.cs" />
     <Compile Include="Scripts\PlansWrite.cs" />
     <EmbeddedResource Include="Form1.resx">

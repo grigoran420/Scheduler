@@ -11,6 +11,7 @@ namespace Scheduler.Scripts
     {
         StreamWriter sw;
 
+
         internal void Write (string Path, List<string> Plans)
         {
             sw = new StreamWriter(Path);

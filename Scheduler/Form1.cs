@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using Scheduler.Scripts;
 
 namespace Scheduler
 {
     public partial class Form1 : Form
     {
-        readonly string Path = "Plans.pln";
-        List<string> Plans;
+        private readonly string Path = "Plans.pln";
+        private List<string> Plans;
+
         public Form1()
         {
             InitializeComponent();
-
+            
             Plans = new List<string>();
             int sec = System.DateTime.Now.Second;
             Time.Text = $"{System.DateTime.Now.Hour}:{System.DateTime.Now.Minute}:{System.DateTime.Now.Second}";
-            while (sec == System.DateTime.Now.Second)
-            {
-                
-            }
+            while (sec == System.DateTime.Now.Second) { }
+            dateTimePicker1.Value = DateTime.Now;
             timer1.Enabled = true;
+            EventTimer.Enabled = true;
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -38,16 +31,16 @@ namespace Scheduler
         private void Button1_Click(object sender, EventArgs e)
         {
             PlansRead read = new PlansRead();
-            
+
             Plans = read.Read(Path);
             if (Plans != null)
             {
                 for (int i = 0; i < Plans.Count; i++)
-                {
+                { 
                     listBox1.Items.Add(Plans[i]);
                 }
             }
-            else MessageBox.Show("Don't find data!", "Error", MessageBoxButtons.OK);
+            //else MessageBox.Show("Don't find data!", "Error", MessageBoxButtons.OK);
             Create.Enabled = true;
         }
 
@@ -62,6 +55,12 @@ namespace Scheduler
                 MessageBox.Show("Wrong time", "Warring", MessageBoxButtons.OK);
                 return;
             }
+            if (listBox1.Items.Count > 399)
+            {
+                MessageBox.Show("Event overflow", "Warring", MessageBoxButtons.OK);
+                return;
+            }
+
             List<string> PlansWrite = new List<string>();
 
             PlansWrite.Add(textBox1.Text);
@@ -78,5 +77,13 @@ namespace Scheduler
             PW.Write(Path, Plans);
         }
 
+        private void EventTimer_Tick(object sender, EventArgs e)
+        {
+            EventNow @event = new EventNow();
+            List<string> EventActive = @event.Check(Plans);
+            listBox1.Items.Clear();
+            for (int i = 0; i < EventActive.Count; i++) listBox1.Items.Add(EventActive[i]);
+            //MessageBox.Show(EventActive.ToString());
+        }
     }
 }

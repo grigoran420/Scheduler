@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,6 +11,7 @@ namespace Scheduler.Scripts
         readonly List<string> Plans;
         internal PlansRead()
         {
+
             Plans = new List<string>();
         }
 
@@ -31,6 +28,9 @@ namespace Scheduler.Scripts
                     StreamWriter create = new StreamWriter(Path);
                     create.Close();
                     sr = new StreamReader(Path);
+                }else if (sr == null)
+                {
+                    return Plans;
                 }
                 
             }
@@ -40,14 +40,13 @@ namespace Scheduler.Scripts
                 sr.Close();
                 return Plans;
             }
-
+            
             while (!sr.EndOfStream)
             {
                 Plans.Add(sr.ReadLine());
             }
             sr.Close();
             return Plans;
-            
         }
 
     }

@@ -43,6 +43,7 @@ namespace Scheduler
             this.Hours = new System.Windows.Forms.ComboBox();
             this.Minutes = new System.Windows.Forms.ComboBox();
             this.Seconds = new System.Windows.Forms.ComboBox();
+            this.EventTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -56,8 +57,10 @@ namespace Scheduler
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(12, 86);
             this.listBox1.Name = "listBox1";
+            this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(200, 290);
             this.listBox1.TabIndex = 1;
             // 
@@ -130,6 +133,7 @@ namespace Scheduler
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(218, 60);
+            this.textBox1.MaxLength = 255;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 8;
@@ -308,6 +312,11 @@ namespace Scheduler
             this.Seconds.TabIndex = 11;
             this.Seconds.Text = "SS";
             // 
+            // EventTimer
+            // 
+            this.EventTimer.Interval = 10000;
+            this.EventTimer.Tick += new System.EventHandler(this.EventTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +356,7 @@ namespace Scheduler
         private System.Windows.Forms.ComboBox Hours;
         private System.Windows.Forms.ComboBox Minutes;
         private System.Windows.Forms.ComboBox Seconds;
+        private System.Windows.Forms.Timer EventTimer;
     }
 }
 
